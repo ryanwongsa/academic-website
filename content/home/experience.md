@@ -34,4 +34,13 @@ date_format = "Jan 2006"
   * Vision Applications
   """
 
+[[experience]]
+  title = "Salesforce and IT Volunteer/Intern"
+  company = "South African Education and Environment Project"
+  company_url = "https://www.saep.org/"
+  location = "Cape Town"
+  date_start = "2016-02-15"
+  date_end = "2016-05-15"
+  description = """  """
+
 +++
