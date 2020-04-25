@@ -14,7 +14,7 @@ role: Software Engineer / ML Engineer
 
 # Organizations/Affiliations
 organizations:
-- name: ""
+- name: Streamba
   url: ""
 
 # Short bio (displayed in user profile at end of posts)
