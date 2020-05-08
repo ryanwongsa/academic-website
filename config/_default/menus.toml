@@ -14,8 +14,8 @@
   weight = 15
 
 [[main]]
-  name = "Accomplish­ments"
-  url = "#accomplish­ments"
+  name = "Accomplishments"
+  url = "#accomplishments"
   weight = 20
 
 [[main]]
@@ -28,10 +28,10 @@
   url = "#projects"
   weight = 30
 
-[[main]]
-  name = "Publications"
-  url = "#publications"
-  weight = 40
+# [[main]]
+#   name = "Publications"
+#   url = "#publications"
+#   weight = 40
 
 # Link to a PDF of your resume/CV from the menu.
 # To enable, copy your resume/CV to `static/files/cv.pdf` and uncomment the lines below.

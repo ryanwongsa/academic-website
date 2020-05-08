@@ -31,16 +31,25 @@ date_format = "Jan 2006"
   * Web Development
   * Machine Learning
   * Cloud Computing
-  * Vision Applications
+  * Computer Vision Applications
   """
 
 [[experience]]
   title = "Salesforce and IT Volunteer/Intern"
   company = "South African Education and Environment Project"
-  company_url = "https://www.saep.org/"
+  company_url = ""
   location = "Cape Town"
   date_start = "2016-02-15"
   date_end = "2016-05-15"
   description = """  """
+
+[[experience]]
+  title = "Intern"
+  company = "University of Cape Town"
+  company_url = ""
+  location = "Cape Town"
+  date_start = "2012-12-09"
+  date_end = "2013-01-15"
+  description = """ Summer Undergraduate Research Experience Program """
 
 +++
