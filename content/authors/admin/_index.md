@@ -18,7 +18,7 @@ organizations:
   url: ""
 
 # Short bio (displayed in user profile at end of posts)
-bio: My research interests include distributed robotics, mobile computing and programmable matter.
+bio: My research interests include computer vision, machine learning and artificial intelligence.
 
 interests:
 - Artificial Intelligence
@@ -67,3 +67,4 @@ email: ""
 Ryan Wong is an experienced Software Engineer with a demonstrated history of working in the Computer Science industry. Strong research and engineering graduate with a Masters in Computing Science from the University of Glasgow.
 
 I am interested in Machine Learning, in particular the applications to the Computer Vision domain. I am eager to continue learning and apply my knowledge to various domains.
+
