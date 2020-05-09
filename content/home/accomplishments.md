@@ -46,10 +46,6 @@ date_format = "Jan 2006"
   certificate_url = ""
   date_start = ""
   date_end = ""
-  description = """
-  - Deefake Detection Challenge: 16/2265 (top 1%)
-  - Open Images 2019 - Visual Relationship: 29/201 (Silver)
-  - Open Images 2019 - Instance Segmentation: 58/193 (Bronze)
-  """
+  description = "~ Deefake Detection Challenge: 16/2265 (top 1%) ~ Open Images 2019 Visual Relationship: 29/201 (Silver) ~ Open Images 2019 Instance Segmentation: 58/193 (Bronze)"
 
 +++
