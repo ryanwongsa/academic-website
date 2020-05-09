@@ -14,7 +14,7 @@ external_link: "https://ryanwongsa.github.io/Masters_website/"
 # Focal points: Smart, Center, TopLeft, Top, TopRight, Left, Right, BottomLeft, Bottom, BottomRight.
 image:
   caption: ""
-  focal_point: ""
+  focal_point: Smart
   preview_only: false
 
 # Custom links (optional).
