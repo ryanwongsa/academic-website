@@ -28,7 +28,7 @@ image:
 projects: []
 ---
 
-This post gives an overview of the process I went through for the DeepFake Detection Competition hosted on Kaggle, where I achieved 16th position out of over 2000 teams (top 1%). The competition ran from December 2019 to the end of March 2020 and was one of my first competitions in which I felt that I had enough resources to compete with top competitors as AWS sponsored participants with almost $2000 of AWS credits.
+An overview of the process I went through for the DeepFake Detection Competition hosted on Kaggle, where I achieved 16th position out of over 2000 teams (top 1%). The competition ran from December 2019 to the end of March 2020 and was one of my first competitions in which I felt that I had enough resources to compete with top competitors as AWS sponsored participants with almost $2000 of AWS credits.
 
 This blog post is more a general guide of how I approached this competition than a technical report.
 
