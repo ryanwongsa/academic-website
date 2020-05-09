@@ -38,4 +38,18 @@ date_format = "Jan 2006"
   date_end = ""
   description = ""
 
+[[item]]
+  organization = "Kaggle"
+  organization_url = "https://www.kaggle.com/taggatle"
+  title = "Kaggle Competitions"
+  url = ""
+  certificate_url = ""
+  date_start = ""
+  date_end = ""
+  description = """
+  - Deefake Detection Challenge: 16/2265 (top 1%)
+  - Open Images 2019 - Visual Relationship: 29/201 (Silver)
+  - Open Images 2019 - Instance Segmentation: 58/193 (Bronze)
+  """
+
 +++
