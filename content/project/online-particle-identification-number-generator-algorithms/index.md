@@ -2,7 +2,7 @@
 # Documentation: https://sourcethemes.com/academic/docs/managing-content/
 
 title: "Online Particle Identification Number Generator Algorithms"
-summary: "Honours project"
+summary: "Honours Project: Online Particle Identifier Number Generator Algorithms created with ANNs for Particle Identification."
 tags: []
 date: 2020-05-09T09:34:22+01:00
 

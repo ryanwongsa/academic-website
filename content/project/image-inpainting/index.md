@@ -2,7 +2,7 @@
 # Documentation: https://sourcethemes.com/academic/docs/managing-content/
 
 title: "Image Inpainting"
-summary: ""
+summary: "My PyTorch re-implmentation of the paper, Image Inpainting for Irregular Holes Using Partial Convolutions."
 authors: []
 tags: []
 categories: []

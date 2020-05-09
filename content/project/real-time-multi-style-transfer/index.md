@@ -2,8 +2,8 @@
 # Documentation: https://sourcethemes.com/academic/docs/managing-content/
 
 title: "Real Time Multi Style Transfer"
-summary: "Summary"
-authors: [admin]
+summary: "My re-implementation in Pytorch of an adaption of the paper A Learned Representation for Artistic Style."
+authors: []
 tags: [Deep Learning, Computer Vision]
 categories: []
 date: 2020-05-09T07:47:45+01:00

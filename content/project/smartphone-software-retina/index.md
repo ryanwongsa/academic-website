@@ -2,9 +2,9 @@
 # Documentation: https://sourcethemes.com/academic/docs/managing-content/
 
 title: "Smartphone Software Retina"
-summary: "Masters project"
+summary: "Masters Project: Smartphone Software Retina - Biologically inspired software retina with a gaze control mechanism"
 tags: []
-date: 2020-05-09T09:34:22+01:00
+date: 2020-05-09T09:48:22+01:00
 
 # Optional external URL for project (replaces project detail page).
 external_link: "https://ryanwongsa.github.io/Masters_website/"
