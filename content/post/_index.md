@@ -1,5 +1,7 @@
 ---
-title: Posts
+title: DeepFake Detection Challenge
+
+summary: "Summary of my post."
 
 # View.
 #   1 = List
@@ -12,3 +14,5 @@ header:
   caption: ""
   image: ""
 ---
+
+Info over here
