@@ -44,8 +44,11 @@ date_format = "Jan 2006"
   title = "Kaggle Competitions"
   url = ""
   certificate_url = ""
-  date_start = ""
+  date_start = "2020-04-01"
   date_end = ""
-  description = "~ Deefake Detection Challenge: 16/2265 (top 1%) ~ Open Images 2019 Visual Relationship: 29/201 (Silver) ~ Open Images 2019 Instance Segmentation: 58/193 (Bronze)"
+  description = """
+  - Deepfake Detection Challenge: 16/2265 (top 1%) - Open Images 2019 Visual Relationship: 29/201 (Silver) 
+  - Open Images 2019 Instance Segmentation: 58/193 (Bronze)
+  """
 
 +++
