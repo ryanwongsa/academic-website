@@ -28,7 +28,9 @@ image:
 projects: []
 ---
 
-An overview of the process I went through for the DeepFake Detection Competition hosted on Kaggle, where I achieved 16th position out of over 2000 teams (top 1%). The competition ran from December 2019 to the end of March 2020 and was one of my first competitions in which I felt that I had enough resources to compete with top competitors as AWS sponsored participants with almost $2000 of AWS credits.
+An overview of the process I went through for the DeepFake Detection Competition hosted on Kaggle, where I achieved 16th position out of over 2000 teams (top 1%).
+
+The competition ran from December 2019 to the end of March 2020 and was one of my first competitions in which I felt that I had enough resources to compete with top competitors as AWS sponsored participants with almost $2000 of AWS credits.
 
 This blog post is more a general guide of how I approached this competition than a technical report.
 
@@ -38,9 +40,9 @@ The competition was set up such that generalisation in methods for identifying d
 
 *Public Leaderboard*
 
-The public leaderboard used a test set which was completely withheld and was similar to the training dataset. We could continuously run our models to check our score against competitors during the competition on this leaderboard. 
+The public leaderboard used a test set which was completely withheld and was similar to the training dataset. We could continuously run our models to check our score against competitors during the competition on this leaderboard.
 
-<!-- my progress image of the public leaderboard -->
+{{< figure src="imgs/publicleaderboardhistory.png" title="Example of my submission scores over time for this competition" lightbox="true" >}}
 
 *Private Leaderboard*
 
