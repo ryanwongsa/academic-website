@@ -123,7 +123,7 @@ My training process involved managing my AWS credits effectively, with all my ex
 
 Overall, I had around 200 experiment for hyperparameter searching and the model training. The training epochs took around 1.5 hours, which took a long time due to not doing intermediate preprocessing (something I would do in future competitions to save time and money).
 
-<!-- Dataset -> Batch of 50% fake and 50% real Videos -> n frame selection -> Augmentation -> Face Extraction -> m faces selection -> Model -> Prediction -->
+{{< figure src="imgs/training.png" title="Training Pipeline" lightbox="true" >}}
 
 List of ideas which I found helped speed up the training process and generalisation:
 
@@ -141,7 +141,7 @@ During inference since it was a kernel only competition with a 9 hours runtime l
 - Select 10 frames which are an equal distance apart
 - Select 2 frames on either side of the selected frames to create the 5 frame sequence.
 
-<!-- Image showing the inference pipeline -->
+{{< figure src="imgs/inference.png" title="Inference Pipeline" lightbox="true" >}}
 
 ### Post Processing
 
@@ -155,13 +155,13 @@ These thresholds were found using a grid search across different minimum frame s
 
 ## Audio
 
-For this competition, I set aside 2 weeks to look into audio classification. Having never worked with audio data before I tried many ideas but none of the models were able to learn at a level required to improve my score. The general process I used for the audio component involved converting the audio samples to a Mel Spectrogram which allowed audio task to be treated as an image classification task. The training process I followed was similar to one that got 1st Place on the public leaderboard for ERC2019 ( Pytorch-Audio-Emotion-Recognition). One of the potential issues with training models to find fake audio was that the dataset only had 8% data with fake audio, which made it difficult to generalise. Having limited success with the audio component I decided not to include these models in my final submission.
+For this competition, I set aside 2 weeks to look into audio classification. Having never worked with audio data before I tried many ideas but none of the models were able to learn at a level required to improve my score. The general process I used for the audio component involved converting the audio samples to a Mel Spectrogram which allowed audio task to be treated as an image classification task. The training process I followed was similar to one that got [1st Place on the public leaderboard for ERC2019](Pytorch-Audio-Emotion-Recognition). One of the potential issues with training models to find fake audio was that the dataset only had 8% data with fake audio, which made it difficult to generalise. Having limited success with the audio component I decided not to include these models in my final submission.
 
 ## Ensemble
 
 Overall I used 3 models in total with 2 image classification models based on B6-EfficientNet and 1 sequence classification model. One of the selected B6-EfficientNet models and the sequence classification model used CutMix augmentation. I was planning on adding the B7-EfficientNet model and another sequence model to the final ensemble but due to the time constraints and limited remaining AWS credits, I was unable to finish training the models to a level which would enhance the ensemble score.
 
-{{< figure src="imgs/CVvsLeaderboardScores.png" title="Tracking model 'generalisation' performance." lightbox="true" >}}
+{{< figure src="imgs/CVvsLeaderboardScores.png" title="Tracking model 'generalisation' performance against the public leaderboard." lightbox="true" >}}
 
 The models were ensembled by averaging the predictions together after the post processing is complete.
 
