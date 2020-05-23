@@ -44,7 +44,7 @@ The public leaderboard used a test set which was completely withheld and was sim
 
 ### Private Leaderboard
 
-The private leaderboard had a different hidden test set which had videos similar to the training dataset as well as real, organic videos with and without deepfakes. The private leaderboard scores were only revealed at the end of the competition.
+The private leaderboard had a different hidden test set which had videos similar to the training dataset as well as real, organic videos with and without deep fakes. The private leaderboard scores were only revealed at the end of the competition.
 
 The competition metric used a log loss score, which would extremely punish predictions which were confident and wrong.
 
@@ -53,73 +53,67 @@ LogLoss = -\frac{1}{n}\sum_{i=1}^{n}
 [y_i\log(\hat{y}_i)+(1-y_i)\log(1-\hat{y}_i)]
 $$
 
-There was also a limit to using Kaggle kernels (notebooks) with a total external data size limit of 1GB and a 9 hour runtime limit for inference on around 1000 videos. This meant that huge neural networks with massive ensembles were not possible.
+There was also a limit to using Kaggle kernels (notebooks) with a total external data size limit of 1GB and a 9 hour runtime limit for inference on around 1000 videos. 
 
 ## Data
 
 ### The DFDC Dataset
 
-The deepfake dataset for this challenge consists of over 500Gb of video data (around 200 000 videos). Each video contained around a 10 second clip of an actor or actors which were either the original 'real' video or a 'fake' video with altered facial or voice manipulations. The dataset was divided into 50 folders with [under 500 actors in total](https://www.kaggle.com/c/deepfake-detection-challenge/discussion/129832). Majority of the videos contained facial manipulations compared to audio manipulation with around [8% of the dataset containing altered audio](https://www.kaggle.com/c/deepfake-detection-challenge/discussion/121861).
+The deep fake dataset for this challenge consists of over 500Gb of video data (around 200 000 videos). Each video contained around a 10 second clip of an actor or actors which were either the original 'real' video or a 'fake' video with altered facial or voice manipulations. The dataset was divided into 50 folders with [under 500 actors in total](https://www.kaggle.com/c/deepfake-detection-challenge/discussion/129832). Majority of the videos contained facial manipulations compared to audio manipulation with around [8% of the dataset containing altered audio](https://www.kaggle.com/c/deepfake-detection-challenge/discussion/121861).
 
 ### Data Preparations
 
-I used videos from 4 randomly selected folders out of the 50 dataset folders as my validation dataset. The public unseen test set on Kaggle was around 50/50 split of real vs fake videos so I applied the same distribution to my validation set by choosing all the real videos and randomly selecting an equal number of fake videos from the 4 validation folders. This resulted in a validation set with just over 2000 videos. I also applied similar data augmentations, [discussed in the forums](https://www.kaggle.com/c/deepfake-detection-challenge/discussion/122013), to the validation set where only one type of augmentation is applied per video. The distribution of my augmented validation dataset were as follows:
+I used videos from 4 randomly selected folders out of the 50 dataset folders as my validation dataset. The public unseen test set on Kaggle was around 50/50 split of real vs fake videos. I applied the same distribution to my validation set by choosing all the real videos and randomly selecting an equal number of fake videos from the 4 validation folders. This resulted in a validation set with just over 2000 videos. I also applied similar data augmentations, [discussed in the forums](https://www.kaggle.com/c/deepfake-detection-challenge/discussion/122013), to the validation set where only one type of augmentation is applied per video. The distribution of my augmented validation dataset were as follows:
 
-- 25% of frame level JPEG compression
-- 25% of frame size reduced to 1/4 the original size
+- 25% with frame level JPEG compression
+- 25% with frame size reduced to 1/4 the original size
 - 25% had the video frame rate reduced by half
 - no augmentation to the remaining videos
 
 ## Face Extraction
 
-The input used for training was through selecting random frames of the full video resolution where each of the frames went through a pretrained face detector and extracting the cropped facial regions. These cropped facial regions were then resized to `224x224` and used as input into my deepfake detector network.
+The input used for training was through selecting random frames of the full video resolution where each of the frames went through a pretrained face detector and extracting the cropped facial regions. These cropped facial regions are then resized to `224x224` and used as input into the deep fake detector network.
 
 ### Augmentation
 
-Various data augmentation methods were required to generalise the models to the unseen test set. I used different input augmentations during training and updated the augmentation manually, depending on the CV score of the models. Initially the models were trained with only JPEG compression, downscaling, resizing and horizontal flipping.
+I used different input augmentations during training and updated the augmentation manually, depending on the CV score of the models. Initially the models were trained with only JPEG compression, downscaling, resizing and horizontal flipping.
 Upon further training more stronger versions of the above augmentation were applied along with other general pixel level augmentation such as adjustments to brightness, contrast and introducing noise. Full details of the coded implementation are available [here](https://github.com/ryanwongsa/DeepFakeDetectionChallenge/blob/master/augmentations/augment.py).
 
 ### Face Detector
 
-The face detector I used was the [MTCNN detector](https://github.com/timesler/facenet-pytorch). This face detector was chosen because it was robust and the code allowed for easy modifications to handle my use case. The following modifications were applied:
+The selected face detector was the pretrained [MTCNN detector](https://github.com/timesler/facenet-pytorch). 
 
 #### Margin Factor
 
-One of the main modifications to the face detector was to use dynamic margins around the facial regions. The margins were calculated based on the height of the facial region.
+Dynamic margins around the detected facial regions are used to include head features such as hair and ears of the facial crops. The margins are calculated based on the height of the facial region.
 
 ```python
      margin = face_box_height/margin_factor - face_box_height
 ```
 
-Where the `margin_factor` I used was `0.75`.
+Where the `margin_factor` selected is `0.75`.
 
 #### Face Selection
 
-The top 2 faces that had a probability above 0.99 were selected from each of input frames as input into the deep fake detector model. If no faces were found that were above 0.99, then the top 1 face that had a probability above 0.6 was used instead. If no faces were found by the face detector then the video is assumed to be 50% fake (to stop extreme punishment in the log loss score).
-
-#### Sequence of Frames
-
-The input facial crops for the sequence models used 5 consecutive frames where the middle facial frame (3rd of the sequence) is the base crop coordinates for the other surrounding frames. Only one frame was analysed by the face detector per sequence to reduce the inference time, since the face detector was the major bottleneck in the time performance.
+The top 2 detected faces that have a probability above 0.99 are selected as input frames into the deep fake detector model. If no faces are found above the 0.99 threshold, then the next facial crop above the 0.6 threshold is used instead. If no faces are found by the face detector then the video is assumed to be 50% fake (to stop extreme punishment in the log loss score).
 
 ## Models
 
-### Image Classification
+As EfficientNet models produce state of the art results on various image classification tasks, many of my experiments used different versions of EfficientNet. For the frame by frame models I mainly used B6-EfficientNet model.
 
-At the time of the competition EfficientNet models produced state of the art results on various image classification tasks so many of my experiments were completed using the different versions of EfficientNet. For the frame by frame models I mainly used the B6-EfficientNet model. I experimented initially with B0 for my baseline approach to determine whether EfficientNet would be suitable for this competition. I also experimented with B7-EfficientNet but due to the model size and long training times, I decided to stick with the B6 model.
+I did not want the sequence models to learn the same information as the frame by frame models so I avoided training the backbone of the network and trained only the head LSTM (2 hidden states) and fully connected layers of the network.
 
-Training the sequence models to produce good scores was a challenging task as I didn't want the models to learn the same information that the frame by frame models learnt.  To do this I avoided training the backbone of the network and trained only the head LSTM (2 hidden states) and fully connected layers of the network.
+Initial experiments were on various ImageNet pretrained models (ResNet, EfficientNet, ResNeXt) as the backbone to the sequence classifier but these networks did not learn / learnt extremely slowly. My assumption for why these models were unable to learn is that the backbone component could not provide features to the LSTM which allowed it to distinguish between the real and fake faces. I switched the weights of my backbone network to one of the B6-EfficientNet models pre-trained on the frame by frame deep fake model which allowed the sequence model to learn much more quickly and had a slight improvement over using a frame by frame classifier.
 
-Initially I tried to use various ImageNet pretrained models (ResNet, EfficientNet, ResNeXt ) as the backbone to the sequence classifier but these networks did not learn / learnt extremely slowly. My assumption for why these models were unable to learn is that the backbone component could not provide features to the LSTM which allowed it to distinguish between the real and fake faces. I switched the weights of my backbone to one of the B6-EfficientNet models pre-trained on the frame by frame classification model and this allowed the sequence model to learn much more quickly and had a slight improvement over using a frame by frame classifier.
-
-{{< figure src="imgs/sequence_model_struggles.png" title="Examples of experiments during sequence model training. Models which used the pretrained imagenet weights remained close to 0.69 logloss." lightbox="true" >}}
+{{< figure src="imgs/sequence_model_struggles.png" title="Examples of experiments during sequence model training. Models which used the pretrained ImageNet weights remained close to 0.69 log loss." lightbox="true" >}}
 
 ## Training
 
-My training process involved managing my AWS credits effectively, with all my experiments done on spot instances using the p3.2xlarge instances (single V100 GPU). I tracked my experiments with [Weights and Biases](https://www.wandb.com/), while starting and stopping experiments based on observations of the training and validation loss.
+The training process involved managing the AWS credits effectively, with all my experiments on spot instances using the p3.2xlarge instances (single V100 GPU). I tracked my experiments with [Weights and Biases](https://www.wandb.com/), while starting and stopping experiments based on observations of the training and validation loss.
 
 {{< figure src="imgs/image_class_training.png" title="Example of a few experiments tracked with Weights and Biases" lightbox="true" >}}
 
-Overall, I had around 200 experiment for hyperparameter searching and the model training. The training epochs took around 1.5 hours, which took a long time due to not doing intermediate preprocessing (something I would do in future competitions to save time and money).
+Overall, I had around 200 experiment for hyperparameter searching and model training. The training epochs took around 1.5 hours, which took a long time due to not doing intermediate preprocessing (something I would do in future competitions to save time and money).
 
 {{< figure src="imgs/training.png" title="Training Pipeline" lightbox="true" >}}
 
@@ -134,7 +128,7 @@ List of ideas which I found helped speed up the training process and generalisat
 
 ## Inference
 
-During inference since it was a kernel only competition with a 9 hours runtime limit for predicting on 1000 videos, I limited the number of frames analysed to 50 frames with 10 sequences per video. The frames were selected based on the following rules:
+I limited the number of frames analysed to 50 frames with 10 sequences per video to keep within the 9 hour inference limit. The frames were selected based on the following rules:
 
 - Select 10 frames which are an equal distance apart
 - Select 2 frames on either side of the selected frames to create the 5 frame sequence.
@@ -153,15 +147,18 @@ These thresholds were found using a grid search across different minimum frame s
 
 ## Audio
 
-For this competition, I set aside 2 weeks to look into audio classification. Having never worked with audio data before I tried many ideas but none of the models were able to learn at a level required to improve my score. The general process I used for the audio component involved converting the audio samples to a Mel Spectrogram which allowed audio task to be treated as an image classification task. The training process I followed was similar to one that got [1st Place on the public leaderboard for ERC2019](Pytorch-Audio-Emotion-Recognition). One of the potential issues with training models to find fake audio was that the dataset only had 8% data with fake audio, which made it difficult to generalise. Having limited success with the audio component I decided not to include these models in my final submission.
+I set aside 2 weeks to look into audio classification. Having never worked with audio data before I tried many ideas but none of the models were able to learn at a level required to improve my score. The general process I used for the audio component involved converting the audio samples to a Mel Spectrogram which allowed audio task to be treated as an image classification task. The training process I followed was similar to one that achieved [1st Place on the public leaderboard for ERC2019](Pytorch-Audio-Emotion-Recognition). One of the issues with training models to find fake audio was the limited fake audio samples. Having limited success with the audio component I decided not to include these models in my final submission.
 
 ## Ensemble
 
-Overall I used 3 models in total with 2 image classification models based on B6-EfficientNet and 1 sequence classification model. One of the selected B6-EfficientNet models and the sequence classification model was trained using CutMix augmentation. I was planning on adding the B7-EfficientNet model and another sequence model to the final ensemble but due to the time constraints and limited remaining AWS credits, I was unable to finish training the models to a level which would enhance the ensemble score.
+My final ensemble consisted of 3 models:
+- An image classification models based on B6-EfficientNet trained without CutMix
+- An image classification models based on B6-EfficientNet trained with CutMix
+- A sequence classification model with a the B6-EfficientNet model as the backbone architecture and a head network with a 2 hidden state LSTM
 
 {{< figure src="imgs/CVvsLeaderboardScores.png" title="Tracking model 'generalisation' performance against the public leaderboard." lightbox="true" >}}
 
-The models were ensembled by averaging the predictions together after the post processing is complete.
+The selected models were ensembled by averaging the predictions together after the post processing.
 
 ## Conclusions
 
