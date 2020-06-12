@@ -48,7 +48,7 @@ date_format = "Jan 2006"
   date_end = ""
   description = """
   List of notable competitions entered:
-  - Deepfake Detection Challenge: 16/2265 (top 1%) 
+  - Deepfake Detection Challenge: 15/2265 (top 1%) 
   - Open Images 2019 Visual Relationship: 29/201 (Silver) 
   - Open Images 2019 Instance Segmentation: 58/193 (Bronze)
   """
