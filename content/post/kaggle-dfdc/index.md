@@ -2,7 +2,7 @@
 # Documentation: https://sourcethemes.com/academic/docs/managing-content/
 
 title: "DeepFake Detection Competition"
-subtitle: "My approach to achieve 16th position (top 1%) in the Kaggle DeepFake Detection Competition"
+subtitle: "My approach to achieve 15th position (top 1%) in the Kaggle DeepFake Detection Competition"
 summary: ""
 authors: [admin]
 tags: []
@@ -28,7 +28,7 @@ image:
 projects: []
 ---
 
-An overview of the process I went through for the DeepFake Detection Competition hosted on Kaggle, where I achieved 16th position out of over 2000 teams (top 1%). This blog post is more a general guide of how I approached this competition than a technical report.
+An overview of the process I went through for the DeepFake Detection Competition hosted on Kaggle, where I achieved 15th position out of over 2000 teams (top 1%). This blog post is more a general guide of how I approached this competition than a technical report.
 
 The competition ran from December 2019 to the end of March 2020 and was one of my first competitions in which I had enough resources to compete with top competitors as AWS sponsored participants with almost $2000 of AWS credits.
 
@@ -53,7 +53,7 @@ LogLoss = -\frac{1}{n}\sum_{i=1}^{n}
 [y_i\log(\hat{y}_i)+(1-y_i)\log(1-\hat{y}_i)]
 $$
 
-There was also a limit to using Kaggle kernels (notebooks) with a total external data size limit of 1GB and a 9 hour runtime limit for inference on around 1000 videos. 
+There was also a limit to using Kaggle kernels (notebooks) with a total external data size limit of 1GB and a 9 hour runtime limit for inference on around 1000 videos.
 
 ## Data
 
