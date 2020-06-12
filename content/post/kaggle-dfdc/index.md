@@ -1,8 +1,8 @@
 ---
 # Documentation: https://sourcethemes.com/academic/docs/managing-content/
 
-title: "DeepFake Detection Competition"
-subtitle: "My approach to achieve 15th position (top 1%) in the Kaggle DeepFake Detection Competition"
+title: "DeepFake Detection Challenge"
+subtitle: "My approach to achieve 15th position (top 1%) in the Kaggle DeepFake Detection Challenge"
 summary: ""
 authors: [admin]
 tags: []
@@ -28,9 +28,12 @@ image:
 projects: []
 ---
 
-An overview of the process I went through for the DeepFake Detection Competition hosted on Kaggle, where I achieved 15th position out of over 2000 teams (top 1%). This blog post is more a general guide of how I approached this competition than a technical report.
+An overview of the process I went through for the DeepFake Detection Challenge hosted on Kaggle, where I achieved 15th position out of over 2000 teams (top 1%). This blog post is more a general guide of how I approached this competition than a technical report.
 
 The competition ran from December 2019 to the end of March 2020 and was one of my first competitions in which I had enough resources to compete with top competitors as AWS sponsored participants with almost $2000 of AWS credits.
+
+{{< figure src="imgs/results.JPG" title="Final Competition Leaderboard" >}}
+
 
 ## Competition Overview
 
