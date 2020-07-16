@@ -1,8 +1,8 @@
 ---
 # Documentation: https://sourcethemes.com/academic/docs/managing-content/
 
-title: "Cheatsheet for Setting up Cloud VM for Deep Learning"
-subtitle: "General tips on the process to set up vm's for deep learning"
+title: "Cheatsheet for Setting up Deep Learning Cloud VMs"
+subtitle: "General tips on the process to set up a deep learning vm"
 summary: ""
 authors: [admin]
 tags: []
