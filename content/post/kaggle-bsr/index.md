@@ -2,7 +2,7 @@
 # Documentation: https://sourcethemes.com/academic/docs/managing-content/
 
 title: "Cornell Birdcall Identification Competition"
-subtitle: "My approach to achieve 1st position in the Kaggle Cornell Birdcall Identification Competition"
+subtitle: "My approach to achieve 1st place in the Kaggle Cornell Birdcall Identification Competition"
 summary: ""
 authors: [admin]
 tags: []
@@ -28,7 +28,7 @@ image:
 projects: []
 ---
 
-An overview of the process I went through for the Cornell Birdcall Identification Competition hosted on Kaggle, where I achieved 1st position. The competition ran from mid June 2020 to mid September 2020.
+An overview of the process I went through for the Cornell Birdcall Identification Competition hosted on Kaggle, where I achieved 1st place. The competition ran from mid June 2020 to mid September 2020.
 
 {{< figure src="imgs/results.JPG" title="Final Competition Leaderboard" >}}
 
