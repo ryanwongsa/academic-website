@@ -50,7 +50,7 @@ The unseen test data was significantly different as it contained approximately 1
 
 ## Models
 
-When I started the competition, I tried simple image classification approaches by creating mel spectrograms at 5 second increments and used noisy label losses such as lsoft loss and lq loss. This approach, kept me near the top of the leaderboard in the early stages of the competition but I couldn't make improvements.
+When I started the competition, I tried simple image classification approaches by creating mel spectrograms with 5 seconds clips and used noisy label losses such as lsoft loss and lq loss since it was garenteed that the audio would contain the bird calls. This approach, kept me near the top of the leaderboard in the early stages of the competition but I couldn't make improvements.
 I then switched to a weakly supervised training method using attention. My final models used a Sound Event Detection approach described in [PANNs: Large-Scale Pretrained Audio Neural Networks for Audio Pattern Recognition](https://arxiv.org/abs/1912.10211). Kaggle user [hidehisaarai1213](hidehisaarai1213) provides a good explaination of how it works in the Kaggle kernel [introduction to sound event detection](https://www.kaggle.com/hidehisaarai1213/introduction-to-sound-event-detection).
 
 ### Main Differences
