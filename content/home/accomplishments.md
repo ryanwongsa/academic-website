@@ -44,11 +44,12 @@ date_format = "Jan 2006"
   title = "Kaggle Competitions"
   url = ""
   certificate_url = ""
-  date_start = "2020-04-01"
+  date_start = "2020-09-17"
   date_end = ""
   description = """
   List of notable competitions entered:
-  - Deepfake Detection Challenge: 15/2265 (top 1%) 
+  - Cornell Birdcall Identification: 1/1390 (Gold)
+  - Deepfake Detection Challenge: 15/2265 (Silver) 
   - Open Images 2019 Visual Relationship: 29/201 (Silver) 
   - Open Images 2019 Instance Segmentation: 58/193 (Bronze)
   """

@@ -74,3 +74,4 @@ Ryan Wong is an experienced Software Engineer with a demonstrated history of wor
 
 I am interested in Machine Learning, in particular the applications to the Computer Vision domain. I am eager to continue learning and apply my knowledge to various domains.
 
+Highest Kaggle Competition Rank: 28 (Competitions Master)

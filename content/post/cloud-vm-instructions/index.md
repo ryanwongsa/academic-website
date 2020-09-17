@@ -134,4 +134,11 @@ Autoreload notebook
 %autoreload 2
 ```
 
+Profile pythong code
+
+```python
+import cProfile
+cProfile.run('ds.__getitem__(15)')
+```
+
 *WIP*...
