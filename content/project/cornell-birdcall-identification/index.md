@@ -2,7 +2,7 @@
 # Documentation: https://sourcethemes.com/academic/docs/managing-content/
 
 title: "Cornell Birdcall Identification"
-summary: "Kaggle Competition: My solution to achieve 1st place in the Cornell birdcall Identification Challenge"
+summary: "Kaggle Competition: My solution to achieve 1st place in the Cornell Birdcall Identification Challenge"
 authors: []
 tags: []
 categories: []
